@@ -51,3 +51,32 @@ class User {
           detailsPage: detailsPage ?? this.detailsPage
           );
 }
+
+
+List<User> allUser = [
+    User(
+        regiStrationNo: "CUT/CLIP/66/2023",
+        name: "BIJAYA KUMAR NAYAK",
+        mobileNo: "7856241589",
+        village: "PAIKIANRA",
+        gramaPanchayat: "PURUNA-TIGIRIA",
+        block: "TIGIRIA",
+        district: "CUTTUCK",
+        detailsView: "detailsView",
+        action: "action",
+        detailsPage: ""),
+    User(
+        regiStrationNo: "CUT/CLIP/11/2023",
+        name: "JITENDRA PANDA",
+        mobileNo: "9925621457",
+        village: "HATAMAL",
+        gramaPanchayat: "HATAMAL",
+        block: "TIGIRIA",
+        district: "CUTTUCK",
+        detailsView: "detailsView",
+        action: "action",
+        detailsPage: ""),
+
+        
+  ];
+

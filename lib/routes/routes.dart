@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../screens/Beneficiary_Details/benificiary_details_screen.dart';
+import '../screens/Beneficiary_Details/screens/benificiary_details_screen.dart';
 
 class Routes {
   static String beneficiaryDetailsScreen = "/Beneficiary_Details_Screen";

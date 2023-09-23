@@ -3,12 +3,7 @@ import 'package:get/get.dart';
 
 class BenificiaryDetailsController extends GetxController {
   TextEditingController searchController = TextEditingController();
-  final columns = [
-    'Registration\nNo',
-    'Namee',
-    'Mobile\nNo',
-    ''
-  ].obs;
+  final columns = ['Registration\nNo', 'Namee', 'Mobile\nNo', ''].obs;
 
   List<DataColumn> getColumns(List<String> columns) => columns
       .map(
