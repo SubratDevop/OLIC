@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:olic/commons/color_gallery.dart';
 import 'package:olic/constants/screensize.dart';
 import 'package:olic/widgets/buttons.dart';
 import 'package:olic/widgets/default_appbar.dar.dart';
 
 import '../../../widgets/custm_text.dart';
+import '../../Farmer registration Details/farmer_registration_details_screen.dart';
 import '../model/user_modal.dart';
 
 class BeneficiaryInfoScreen extends StatefulWidget {
@@ -95,8 +97,9 @@ class _BeneficiaryInfoScreenState extends State<BeneficiaryInfoScreen> {
               width: ScreenSize.width(context) * 0.45,
               child: details == "detailsView"
                   ? Buttons(
+                    onTapBtn: () => Get.to(const FarmerRegistrationDetailsScreen()),
                       text: "View",
-                      bgColor: ColorGallery.primary_color,
+                      bgColor: ColorGallery.white_color,
                       textColor: ColorGallery.primary_color)
                   : details == "action"
                       ? Buttons(

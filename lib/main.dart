@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
       // getPages: getPages,
 
       // initialRoute: "/Beneficiary_Details_Screen",
-      // home: Beneficiary_Details_Screen(),
-      home: FarmerRegistrationDetailsScreen(),
+      home: Beneficiary_Details_Screen(),
+      // home: FarmerRegistrationDetailsScreen(),
     );
   }
 }
