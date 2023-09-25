@@ -11,7 +11,7 @@ class ScreenSize {
 }
 
 class AppDimension {
-  static double defaultPadding = 20;
+  static double defaultPadding = 15;
 
   static double contentPadding = 12;
 
@@ -19,4 +19,14 @@ class AppDimension {
 
   static double iconsmallSize = 15;
 
+//! Text Size
+  static double get bigTextSize => 18;
+
+  static double get defaultTextSize => 12;
+
+  static double get mediumTextSize => 14;
+
+  static double get smallTextSize => 10;
+
+  static double get verySmallTextSize => 8;
 }

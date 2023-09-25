@@ -4,6 +4,7 @@ class User {
   String? regiStrationNo;
   String? name;
   String? mobileNo;
+  
   String? village;
   String? gramaPanchayat;
   String? block;
@@ -50,11 +51,11 @@ class User {
           action: action ?? this.action,
           detailsPage: detailsPage ?? this.detailsPage
           );
-}
 
 
-List<User> allUser = [
-    User(
+
+static List<User> allUser() {
+  return <User>[  User(
         regiStrationNo: "CUT/CLIP/66/2023",
         name: "BIJAYA KUMAR NAYAK",
         mobileNo: "7856241589",
@@ -76,7 +77,9 @@ List<User> allUser = [
         detailsView: "detailsView",
         action: "action",
         detailsPage: ""),
+       
 
         
   ];
-
+}
+}

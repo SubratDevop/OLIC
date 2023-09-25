@@ -20,15 +20,21 @@ class Beneficiary_Details_Screen extends StatefulWidget {
 
 class _Beneficiary_Details_ScreenState
     extends State<Beneficiary_Details_Screen> {
-  final columns = ['Registration\nNo', 'Name', 'Mobile\nNo', ''];
+  // final columns = ['Registration\nNo', 'Name', 'Mobile\nNo', '','','','','','','',];
+  final columns = [
+    'Registration\nNo',
+    'Name',
+    'Mobile\nNo',
+    '',
+  ];
   int? sortColumnIndex;
   bool isAsending = false;
-  late List<User> users;
+  List<User>? users;
 
   @override
   void initState() {
     super.initState();
-    this.users = List.of(allUser);
+    users = User.allUser();
   }
 
   @override
@@ -40,9 +46,10 @@ class _Beneficiary_Details_ScreenState
       appBar: defaultAppBar(context,
           leading_icon_visibility: false, title: "BENEFICIARY DETAILS"),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+        padding:  EdgeInsets.symmetric(horizontal: AppDimension.defaultPadding),
         child: Column(
           children: [
+         
             const SizedBox(
               height: 20,
             ),
@@ -61,7 +68,36 @@ class _Beneficiary_Details_ScreenState
               sortAscending: isAsending,
               sortColumnIndex: sortColumnIndex,
               columns: getColumns(columns),
-              rows: getRows(users),
+              rows: users!
+                  .map(
+                    (user) => DataRow(
+                      cells: [
+                        DataCell(
+                          Text(user.regiStrationNo!),
+                        ),
+                        DataCell(
+                          Text(user.name!),
+                        ),
+                        DataCell(
+                          Text(user.mobileNo!),
+                        ),
+                        DataCell(
+                          Icon(
+                            FontAwesome.arrow_right,
+                            size: AppDimension.iconsmallSize,
+                          ),
+                        ),
+                      ],
+                      onSelectChanged: (bool? selected) {
+                        if (selected!) {
+                          print("&------------");
+                          debugPrint("Selected row = ${users!.indexOf(user)}");
+                          Get.to(BeneficiaryInfoScreen(index: users!.indexOf(user),),);
+                        }
+                      },
+                    ),
+                  )
+                  .toList(),
             ),
           ],
         ),
@@ -75,87 +111,21 @@ class _Beneficiary_Details_ScreenState
           onSort: sortingList,
           label: Row(
             children: [
-              Text(column,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  )),
+              column == ""
+                  ? SizedBox()
+                  : Text(column,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      )),
             ],
           ),
         );
       }).toList();
 
-  List<DataRow> getRows(List<User> users) => users.map((User user) {
-        final cells = [
-          user.regiStrationNo,
-          user.name,
-          user.mobileNo,
-          user.detailsPage,
-        ];
-
-        return DataRow(
-          // cells: getCells(cells),
-          // onSelectChanged: (bool? selected) {
-          //   if (selected!) {
-
-          //     print(cells.indexOf(user.regiStrationNo).toString());
-          //   }
-          //   //print("object");
-          //   // print(cells.indexOf(cells[user.regiStrationNo].toString()).toString() + "selected");
-          // },
-          cells: cells.map(
-            (data) {
-              print(data);
-              return DataCell(
-                data == ""
-                    ? InkWell(
-                        onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BeneficiaryInfoScreen(),
-                          ),
-                        ),
-                        child: Icon(
-                          FontAwesome.arrow_right,
-                          size: AppDimension.iconsmallSize,
-                        ),
-                      )
-                    : Text(
-                        data!,
-                        style: const TextStyle(fontSize: 12),
-                      ),
-              );
-            },
-          ).toList(),
-        );
-      }).toList();
-
-  List<DataCell> getCells(List<dynamic> cells) => cells.map(
-        (data) {
-          return DataCell(
-            data == ""
-                ? InkWell(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BeneficiaryInfoScreen(),
-                      ),
-                    ),
-                    child: Icon(
-                      FontAwesome.arrow_right,
-                      size: AppDimension.iconsmallSize,
-                    ),
-                  )
-                : Text(
-                    data,
-                    style: const TextStyle(fontSize: 12),
-                  ),
-          );
-        },
-      ).toList();
-
-  void sortingList(int columnIndex, bool ascending) {
+  
+   void sortingList(int columnIndex, bool ascending) {
     if (columnIndex == 0) {
-      users.sort(
+      users!.sort(
         (user1, user2) => compareString(
           ascending,
           user1.regiStrationNo.toString(),
@@ -163,7 +133,7 @@ class _Beneficiary_Details_ScreenState
         ),
       );
     } else if (columnIndex == 1) {
-      users.sort(
+      users!.sort(
         (user1, user2) => compareString(
           ascending,
           user2.name.toString(),
@@ -171,7 +141,7 @@ class _Beneficiary_Details_ScreenState
         ),
       );
     } else if (columnIndex == 2) {
-      users.sort(
+      users!.sort(
         (user1, user2) => compareString(
           ascending,
           user2.mobileNo.toString(),

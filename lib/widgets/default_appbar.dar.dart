@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 AppBar defaultAppBar(BuildContext context,
     {required bool leading_icon_visibility, required final String title}) {
@@ -14,8 +15,10 @@ AppBar defaultAppBar(BuildContext context,
         ? SizedBox()
         : InkWell(
             child:
-                const SizedBox(height: 20, width: 20, child: Icon(Icons.menu)),
-            onTap: () {},
+                const SizedBox(height: 20, width: 20, child: Icon(Icons.arrow_back,color: Colors.white,)),
+            onTap: () {
+              Get.back();
+            },
           ),
   );
 }

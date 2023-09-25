@@ -27,7 +27,8 @@ class _Proposal_not_feasible_ScreenState
   @override
   void initState() {
     super.initState();
-    this.users = List.of(allUser);
+        users = User.allUser();
+
   }
 
   @override
@@ -105,12 +106,15 @@ class _Proposal_not_feasible_ScreenState
               return DataCell(
                 data == ""
                     ? InkWell(
-                        onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BeneficiaryInfoScreen(),
-                          ),
-                        ),
+                        onTap: () =>
+                        //  Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => BeneficiaryInfoScreen(),
+                        //   ),
+                        // )
+                        print("object")
+                        ,
                         child: Icon(
                           FontAwesome.arrow_right,
                           size: AppDimension.iconsmallSize,
@@ -134,7 +138,7 @@ class _Proposal_not_feasible_ScreenState
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BeneficiaryInfoScreen(),
+                        builder: (context) => BeneficiaryInfoScreen(index: 1),
                       ),
                     ),
                     child: Icon(
