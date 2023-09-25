@@ -3,15 +3,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:olic/constants/screensize.dart';
 
 class TittleText extends StatelessWidget {
-  TittleText({this.textWeight, this.tittle});
+  TittleText({this.textWeight, this.tittle,this.textColor});
   final String? tittle;
   final FontWeight? textWeight;
+   Color? textColor;
   @override
   Widget build(BuildContext context) {
     return Text(
       tittle!,
       style: TextStyle(
-          fontSize: AppDimension.mediumTextSize, fontWeight:textWeight ?? FontWeight.bold),
+          fontSize: AppDimension.mediumTextSize,
+          color: textColor ?? Colors.black,
+          fontWeight: textWeight ?? FontWeight.bold),
     );
   }
 }

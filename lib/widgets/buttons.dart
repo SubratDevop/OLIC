@@ -49,7 +49,6 @@ class ActionBtn extends StatelessWidget {
       onPressed: onTapBtn,
       color: ColorGallery.primary_color,
       textColor: ColorGallery.white_color,
-      
       child: Text(
         text,
         style: TextStyle(color: textColor),

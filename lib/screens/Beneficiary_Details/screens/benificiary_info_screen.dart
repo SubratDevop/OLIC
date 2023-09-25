@@ -49,6 +49,8 @@ class _BeneficiaryInfoScreenState extends State<BeneficiaryInfoScreen> {
                 ),
               ],
             ),
+          
+          
             infoWidget("Registration No", users![widget.index!].regiStrationNo),
             infoWidget("Name", users![widget.index!].name),
             infoWidget("Village", users![widget.index!].village),
@@ -111,4 +113,9 @@ class _BeneficiaryInfoScreenState extends State<BeneficiaryInfoScreen> {
       ],
     );
   }
+
+
+
+
+
 }
