@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:olic/constants/screensize.dart';
@@ -6,6 +7,7 @@ import 'package:olic/screens/Beneficiary_Details/model/user_modal.dart';
 
 import '../../../commons/color_gallery.dart';
 import '../../../widgets/default_appbar.dar.dart';
+import '../../../widgets/multi_floating_btn.dart';
 import '../../../widgets/search_bar.dart';
 import '../controller/benificiary_details_controller.dart';
 import 'benificiary_info_screen.dart';
@@ -46,10 +48,9 @@ class _Beneficiary_Details_ScreenState
       appBar: defaultAppBar(context,
           leading_icon_visibility: false, title: "BENEFICIARY DETAILS"),
       body: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: AppDimension.defaultPadding),
+        padding: EdgeInsets.symmetric(horizontal: AppDimension.defaultPadding),
         child: Column(
           children: [
-         
             const SizedBox(
               height: 20,
             ),
@@ -92,7 +93,11 @@ class _Beneficiary_Details_ScreenState
                         if (selected!) {
                           print("&------------");
                           debugPrint("Selected row = ${users!.indexOf(user)}");
-                          Get.to(BeneficiaryInfoScreen(index: users!.indexOf(user),),);
+                          Get.to(
+                            BeneficiaryInfoScreen(
+                              index: users!.indexOf(user),
+                            ),
+                          );
                         }
                       },
                     ),
@@ -102,6 +107,10 @@ class _Beneficiary_Details_ScreenState
           ],
         ),
       ),
+      floatingActionButton: MultiFloatingBtn()
+      
+      
+  
     );
   }
 
@@ -122,8 +131,7 @@ class _Beneficiary_Details_ScreenState
         );
       }).toList();
 
-  
-   void sortingList(int columnIndex, bool ascending) {
+  void sortingList(int columnIndex, bool ascending) {
     if (columnIndex == 0) {
       users!.sort(
         (user1, user2) => compareString(
