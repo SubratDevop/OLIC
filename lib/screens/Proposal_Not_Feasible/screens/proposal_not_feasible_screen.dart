@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:olic/constants/screensize.dart';
 import 'package:olic/screens/Beneficiary_Details/model/user_modal.dart';
+import 'package:olic/widgets/custm_text.dart';
+import 'package:olic/widgets/multi_floating_btn.dart';
 
 import '../../../commons/color_gallery.dart';
 import '../../../widgets/default_appbar.dar.dart';
@@ -27,8 +29,7 @@ class _Proposal_not_feasible_ScreenState
   @override
   void initState() {
     super.initState();
-        users = User.allUser();
-
+    users = User.allUser();
   }
 
   @override
@@ -36,7 +37,8 @@ class _Proposal_not_feasible_ScreenState
     return Scaffold(
       backgroundColor: ColorGallery.white_color,
       appBar: defaultAppBar(context,
-          leading_icon_visibility: false, title: "PROPOSALS NOT-FEASIBLE DETAILS"),
+          leading_icon_visibility: false,
+          title: "PROPOSALS NOT-FEASIBLE DETAILS"),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
@@ -51,19 +53,62 @@ class _Proposal_not_feasible_ScreenState
             const SizedBox(
               height: 20,
             ),
-            DataTable(
-              columnSpacing: 15,
-              showCheckboxColumn: false,
-              horizontalMargin: 10,
-              showBottomBorder: true,
-              sortAscending: isAsending,
-              sortColumnIndex: sortColumnIndex,
-              columns: getColumns(columns),
-              rows: getRows(users),
-            ),
+
+            Center(
+              child: TittleRegulatText(
+                  tittle: "No data available in table",
+                  textWeight: FontWeight.w400),
+            )
+
+            // DataTable(
+            //   columnSpacing: 15,
+            //   showCheckboxColumn: false,
+            //   horizontalMargin: 10,
+            //   showBottomBorder: true,
+            //   sortAscending: isAsending,
+            //   sortColumnIndex: sortColumnIndex,
+            //   columns: getColumns(columns),
+            //   rows:
+            //    users
+            //       .map(
+            //         (user) => DataRow(
+            //           cells: [
+            //             DataCell(
+            //               Text(user.regiStrationNo!),
+            //             ),
+            //             DataCell(
+            //               Text(user.name!),
+            //             ),
+            //             DataCell(
+            //               Text(user.mobileNo!),
+            //             ),
+            //             DataCell(
+            //               Icon(
+            //                 FontAwesome.arrow_right,
+            //                 size: AppDimension.iconsmallSize,
+            //               ),
+            //             ),
+            //           ],
+            //           onSelectChanged: (bool? selected) {
+            //             if (selected!) {
+            //               print("&------------");
+            //               debugPrint("Selected row = ${users!.indexOf(user)}");
+            //               Get.to(
+            //                 BeneficiaryInfoScreen(
+            //                   index: users.indexOf(user),
+            //                 ),
+            //               );
+            //             }
+            //           },
+            //         ),
+            //       )
+            //       .toList(),
+
+            // ),
           ],
         ),
       ),
+      // floatingActionButton: MultiFloatingBtn(),
     );
   }
 
@@ -81,78 +126,6 @@ class _Proposal_not_feasible_ScreenState
           ),
         );
       }).toList();
-
-  List<DataRow> getRows(List<User> users) => users.map((User user) {
-        final cells = [
-          user.regiStrationNo,
-          user.name,
-          user.mobileNo,
-          user.detailsPage,
-        ];
-
-        return DataRow(
-          // cells: getCells(cells),
-          // onSelectChanged: (bool? selected) {
-          //   if (selected!) {
-
-          //     print(cells.indexOf(user.regiStrationNo).toString());
-          //   }
-          //   //print("object");
-          //   // print(cells.indexOf(cells[user.regiStrationNo].toString()).toString() + "selected");
-          // },
-          cells: cells.map(
-            (data) {
-              print(data);
-              return DataCell(
-                data == ""
-                    ? InkWell(
-                        onTap: () =>
-                        //  Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => BeneficiaryInfoScreen(),
-                        //   ),
-                        // )
-                        print("object")
-                        ,
-                        child: Icon(
-                          FontAwesome.arrow_right,
-                          size: AppDimension.iconsmallSize,
-                        ),
-                      )
-                    : Text(
-                        data!,
-                        style: const TextStyle(fontSize: 12),
-                      ),
-              );
-            },
-          ).toList(),
-        );
-      }).toList();
-
-  List<DataCell> getCells(List<dynamic> cells) => cells.map(
-        (data) {
-          return DataCell(
-            data == ""
-                ? InkWell(
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BeneficiaryInfoScreen(index: 1),
-                      ),
-                    ),
-                    child: Icon(
-                      FontAwesome.arrow_right,
-                      size: AppDimension.iconsmallSize,
-                    ),
-                  )
-                : Text(
-                    data,
-                    style: const TextStyle(fontSize: 12),
-                  ),
-          );
-        },
-      ).toList();
 
   void sortingList(int columnIndex, bool ascending) {
     if (columnIndex == 0) {

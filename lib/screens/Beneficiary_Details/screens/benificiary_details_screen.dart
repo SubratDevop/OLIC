@@ -69,7 +69,8 @@ class _Beneficiary_Details_ScreenState
               sortAscending: isAsending,
               sortColumnIndex: sortColumnIndex,
               columns: getColumns(columns),
-              rows: users!
+              rows: 
+              users!
                   .map(
                     (user) => DataRow(
                       cells: [
@@ -103,6 +104,8 @@ class _Beneficiary_Details_ScreenState
                     ),
                   )
                   .toList(),
+          
+          
             ),
           ],
         ),
