@@ -12,7 +12,7 @@ import '../model/user_modal.dart';
 
 class BeneficiaryInfoScreen extends StatefulWidget {
   int? index;
-  BeneficiaryInfoScreen({required this.index});
+  BeneficiaryInfoScreen({ this.index});
 
   @override
   State<BeneficiaryInfoScreen> createState() => _BeneficiaryInfoScreenState();

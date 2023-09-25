@@ -3,6 +3,7 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:olic/constants/screensize.dart';
+import 'package:olic/routes/routes.dart';
 import 'package:olic/screens/Beneficiary_Details/model/user_modal.dart';
 
 import '../../../commons/color_gallery.dart';
@@ -22,151 +23,101 @@ class Beneficiary_Details_Screen extends StatefulWidget {
 
 class _Beneficiary_Details_ScreenState
     extends State<Beneficiary_Details_Screen> {
-  // final columns = ['Registration\nNo', 'Name', 'Mobile\nNo', '','','','','','','',];
-  final columns = [
-    'Registration\nNo',
-    'Name',
-    'Mobile\nNo',
-    '',
-  ];
-  int? sortColumnIndex;
-  bool isAsending = false;
-  List<User>? users;
+  // final columns = [
+  //   'Registration\nNo',
+  //   'Name',
+  //   'Mobile\nNo',
+  //   '',
+  // ];
+  // int? sortColumnIndex;
+  // bool isAsending = false;
+  // List<User>? users;
 
-  @override
-  void initState() {
-    super.initState();
-    users = User.allUser();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   users = User.allUser();
+  // }
 
   @override
   Widget build(BuildContext context) {
     BenificiaryDetailsController controller =
         Get.put(BenificiaryDetailsController());
     return Scaffold(
-      backgroundColor: ColorGallery.white_color,
-      appBar: defaultAppBar(context,
-          leading_icon_visibility: false, title: "BENEFICIARY DETAILS"),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: AppDimension.defaultPadding),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            //! Search Bar
-            DefaultSearchBar(),
-
-            // //! Details list in Table format
-            const SizedBox(
-              height: 20,
-            ),
-            DataTable(
-              columnSpacing: 15,
-              showCheckboxColumn: false,
-              horizontalMargin: 10,
-              showBottomBorder: true,
-              sortAscending: isAsending,
-              sortColumnIndex: sortColumnIndex,
-              columns: getColumns(columns),
-              rows: 
-              users!
-                  .map(
-                    (user) => DataRow(
-                      cells: [
-                        DataCell(
-                          Text(user.regiStrationNo!),
-                        ),
-                        DataCell(
-                          Text(user.name!),
-                        ),
-                        DataCell(
-                          Text(user.mobileNo!),
-                        ),
-                        DataCell(
-                          Icon(
-                            FontAwesome.arrow_right,
-                            size: AppDimension.iconsmallSize,
-                          ),
-                        ),
-                      ],
-                      onSelectChanged: (bool? selected) {
-                        if (selected!) {
-                          print("&------------");
-                          debugPrint("Selected row = ${users!.indexOf(user)}");
-                          Get.to(
-                            BeneficiaryInfoScreen(
-                              index: users!.indexOf(user),
+        backgroundColor: ColorGallery.white_color,
+        appBar: defaultAppBar(context,
+            leading_icon_visibility: false, title: "BENEFICIARY DETAILS"),
+        body: Padding(
+          padding:
+              EdgeInsets.symmetric(horizontal: AppDimension.defaultPadding),
+          child: Obx(
+            ()=> Column(
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                //! Search Bar
+                DefaultSearchBar(),
+          
+                // //! Details list in Table format
+                const SizedBox(
+                  height: 20,
+                ),
+                DataTable(
+                  columnSpacing: 15,
+                  showCheckboxColumn: false,
+                  horizontalMargin: 10,
+                  showBottomBorder: true,
+                  sortAscending: controller.isAsending.value,
+                  
+                  //  sortColumnIndex: controller.sortColumnIndex.value,
+                  columns: controller.getColumns(),
+                  
+                  rows: controller.users.
+                      map(
+                        (user) => DataRow(
+                          cells: [
+                            DataCell(
+                              Text(user.regiStrationNo!),
+                              
                             ),
-                          );
-                        }
-                      },
-                    ),
-                  )
-                  .toList(),
-          
-          
+                            DataCell(
+                              Text(user.name!),
+                            ),
+                            DataCell(
+                              Text(user.mobileNo!),
+                            ),
+                            DataCell(
+                              Icon(
+                                FontAwesome.arrow_right,
+                                size: AppDimension.iconsmallSize,
+                              ),
+                            ),
+                          ],
+                          onSelectChanged: (bool? selected) {
+                            if (selected!) {
+                              print("&------------");
+                              debugPrint(
+                                  "Selected row = ${controller.users.indexOf(user)}");
+                              Get.to(
+                                BeneficiaryInfoScreen(
+                                  index: controller.users!.indexOf(user),
+                                ),
+                              );
+                              // Get.toNamed("/BeneficiaryInfoScreen");
+                            }
+                          },
+                        ),
+                      )
+                      .toList(),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: MultiFloatingBtn()
-      
-      
-  
-    );
-  }
-
-  List<DataColumn> getColumns(List<String> columns) =>
-      columns.map((String column) {
-        return DataColumn(
-          onSort: sortingList,
-          label: Row(
-            children: [
-              column == ""
-                  ? SizedBox()
-                  : Text(column,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                      )),
-            ],
           ),
-        );
-      }).toList();
-
-  void sortingList(int columnIndex, bool ascending) {
-    if (columnIndex == 0) {
-      users!.sort(
-        (user1, user2) => compareString(
-          ascending,
-          user1.regiStrationNo.toString(),
-          user2.regiStrationNo.toString(),
         ),
-      );
-    } else if (columnIndex == 1) {
-      users!.sort(
-        (user1, user2) => compareString(
-          ascending,
-          user2.name.toString(),
-          user1.name.toString(),
-        ),
-      );
-    } else if (columnIndex == 2) {
-      users!.sort(
-        (user1, user2) => compareString(
-          ascending,
-          user2.mobileNo.toString(),
-          user1.mobileNo.toString(),
-        ),
-      );
-    }
-    setState(() {
-      this.sortColumnIndex = columnIndex;
-      this.isAsending = ascending;
-    });
+        floatingActionButton: MultiFloatingBtn());
   }
 
-  int compareString(bool ascending, String value1, String value2) {
-    return ascending ? value1.compareTo(value2) : value2.compareTo(value1);
-  }
+  
+  
 }
