@@ -27,8 +27,10 @@ class Beneficiary_Details_Screen extends StatelessWidget {
           leading_icon_visibility: false, title: "BENEFICIARY DETAILS"),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: AppDimension.defaultPadding),
-        child: Obx(
-          () => Column(
+        child: 
+        
+          
+           Column(
             children: [
               const SizedBox(
                 height: 20,
@@ -40,56 +42,60 @@ class Beneficiary_Details_Screen extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              DataTable(
-                columnSpacing: 15,
-                showCheckboxColumn: false,
-                horizontalMargin: 10,
-                showBottomBorder: true,
-                sortAscending: controller.isAsending.value,
-
-                //  sortColumnIndex: controller.sortColumnIndex.value,
-                columns: controller.getColumns(),
-
-                rows: controller.users
-                    .map(
-                      (user) => DataRow(
-                        cells: [
-                          DataCell(
-                            Text(user.regiStrationNo!),
-                          ),
-                          DataCell(
-                            Text(user.name!),
-                          ),
-                          DataCell(
-                            Text(user.mobileNo!),
-                          ),
-                          DataCell(
-                            Icon(
-                              FontAwesome.arrow_right,
-                              size: AppDimension.iconsmallSize,
+              Obx(
+             ()=>DataTable(
+                  columnSpacing: 15,
+                  showCheckboxColumn: false,
+                  horizontalMargin: 10,
+                  showBottomBorder: true,
+                  sortAscending: controller.isAsending.value,
+              
+                  //  sortColumnIndex: controller.sortColumnIndex.value,
+                   sortColumnIndex: controller.sortColumnIndex.value,
+                  columns: controller.getColumns(),
+              
+                  rows: controller.users
+                      .map(
+                        (user) => DataRow(
+                          cells: [
+                            DataCell(
+                              Text(user.regiStrationNo!),
                             ),
-                          ),
-                        ],
-                        onSelectChanged: (bool? selected) {
-                          if (selected!) {
-                            print("&------------");
-                            debugPrint(
-                                "Selected row = ${controller.users.indexOf(user)}");
-                            Get.to(
-                              BeneficiaryInfoScreen(
-                                index: controller.users!.indexOf(user),
+                            DataCell(
+                              Text(user.name!),
+                            ),
+                            DataCell(
+                              Text(user.mobileNo!),
+                            ),
+                            DataCell(
+                              Icon(
+                                FontAwesome.arrow_right,
+                                size: AppDimension.iconsmallSize,
                               ),
-                            );
-                            // Get.toNamed("/BeneficiaryInfoScreen");
-                          }
-                        },
-                      ),
-                    )
-                    .toList(),
+                            ),
+                          ],
+                          onSelectChanged: (bool? selected) {
+                            if (selected!) {
+                              print("&------------");
+                              debugPrint(
+                                  "Selected row = ${controller.users.indexOf(user)}");
+                              Get.to(
+                                BeneficiaryInfoScreen(
+                                  index: controller.users.indexOf(user),
+                                ),
+                              );
+                              // Get.toNamed("/BeneficiaryInfoScreen");
+                            }
+                          },
+                        ),
+                      )
+                      .toList(),
+                ),
               ),
             ],
           ),
-        ),
+       
+       
       ),
       floatingActionButton: MultiFloatingBtn(),
     );

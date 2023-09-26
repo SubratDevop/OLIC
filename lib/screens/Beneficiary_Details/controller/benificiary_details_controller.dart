@@ -7,7 +7,7 @@ class BenificiaryDetailsController extends GetxController {
   TextEditingController searchController = TextEditingController();
   final columns = ['Registration\nNo', 'Namee', 'Mobile\nNo', ''].obs;
   RxInt sortColumnIndex = 0.obs;
-  RxBool isAsending = false.obs;
+  RxBool isAsending = true.obs;
   List<User> users = [];
 
   List<DataColumn> getColumns() => columns
@@ -15,7 +15,7 @@ class BenificiaryDetailsController extends GetxController {
         (String column) => DataColumn(
           onSort: sortingList,
           label: Row(
-              children: [
+            children: [
               column == ""
                   ? SizedBox()
                   : Text(column,
@@ -55,8 +55,8 @@ class BenificiaryDetailsController extends GetxController {
       );
     }
 
-    columnIndex = this.sortColumnIndex.value;
-    ascending = this.isAsending.value;
+    this.sortColumnIndex.value = columnIndex;
+    this.isAsending.value = ascending;
   }
 
   int compareString(bool ascending, String value1, String value2) {
