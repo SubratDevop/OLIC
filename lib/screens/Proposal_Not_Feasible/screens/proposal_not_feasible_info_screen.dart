@@ -41,13 +41,14 @@ class ProposalNotFeasibleInfoScreen extends StatelessWidget {
           
           
             infoWidget("Registration No", controller.users[index!].regiStrationNo),
-            infoWidget("Name", controller.users[index!].name),
+            infoWidget("Applicant Name", controller.users[index!].name),
+            infoWidget("mobile No", controller.users[index!].mobileNo),
             infoWidget("Village", controller.users[index!].village),
             infoWidget("Gramapanchayat", controller.users[index!].gramaPanchayat),
             infoWidget("Block", controller.users[index!].block),
-            infoWidget("District", controller.users[index!].district),
-            infoWidget("Details View", controller.users[index!].detailsView),
-            infoWidget("Action", controller.users[index!].action),
+            infoWidget("Date of Feasibility Test", "26/09/2023"),
+            infoWidget("Feasibility Test", "-"),
+            infoWidget("Remarks", "-"),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 5.0),
               child: Divider(

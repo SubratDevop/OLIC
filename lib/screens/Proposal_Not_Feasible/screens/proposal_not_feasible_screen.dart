@@ -42,11 +42,11 @@ class ProposalNotFeasibleScreen extends StatelessWidget {
               height: 20,
             ),
 
-            Center(
-              child: TittleRegulatText(
-                  tittle: "No data available in table",
-                  textWeight: FontWeight.w400),
-            )
+            // Center(
+            //   child: TittleRegulatText(
+            //       tittle: "No data available in table",
+            //       textWeight: FontWeight.w400),
+            // )
 
             // Obx(
             //   ()=> DataTable(
