@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(useMaterial3: true),
       getPages: getPages,
 
-      initialRoute: "/Beneficiary_Details_Screen",
+      // initialRoute: "/Beneficiary_Details_Screen",
+      initialRoute: "/FarmerRegistrationDetailsScreen",
       // home: Beneficiary_Details_Screen(),
-      // home: Proposal_not_feasible_Screen(),
     );
   }
 }

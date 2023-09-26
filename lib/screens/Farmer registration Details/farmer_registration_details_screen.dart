@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../commons/color_gallery.dart';
 import '../../constants/screensize.dart';
 import '../../widgets/buttons.dart';
 import '../../widgets/custm_text.dart';
 import '../../widgets/default_appbar.dar.dart';
+import 'controller/farmer_reg_details_controller.dart';
 
-class FarmerRegistrationDetailsScreen extends StatefulWidget {
+class FarmerRegistrationDetailsScreen extends StatelessWidget {
   const FarmerRegistrationDetailsScreen({super.key});
 
   @override
-  State<FarmerRegistrationDetailsScreen> createState() =>
-      _FarmerRegistrationDetailsScreenState();
-}
-
-class _FarmerRegistrationDetailsScreenState
-    extends State<FarmerRegistrationDetailsScreen> {
-  @override
   Widget build(BuildContext context) {
+    FarmerRegDetailsController controller =
+        Get.put(FarmerRegDetailsController());
     return Scaffold(
       backgroundColor: ColorGallery.white_color,
       appBar: defaultAppBar(context,
@@ -160,7 +157,7 @@ class _FarmerRegistrationDetailsScreenState
               ),
             ),
             SizedBox(
-              width: ScreenSize.width(context) * 0.40,
+              width: ScreenSize.width(Get.context!) * 0.40,
               child: details == "View"
                   ? Buttons(
                       text: "View",
