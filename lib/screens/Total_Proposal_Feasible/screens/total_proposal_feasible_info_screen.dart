@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:get/get.dart';
 import 'package:olic/commons/color_gallery.dart';
 import 'package:olic/constants/screensize.dart';
+import 'package:olic/screens/Total_Proposal_Feasible/screens/pdf_sc%20reen.dart';
 import 'package:olic/widgets/buttons.dart';
 import 'package:olic/widgets/default_appbar.dar.dart';
 
@@ -11,11 +13,12 @@ import '../controller/total_proposal_feasible_info_controller.dart';
 
 class TotalProposalFeasibleInfoScreen extends StatelessWidget {
   int? index;
-  TotalProposalFeasibleInfoScreen({ this.index});
+  TotalProposalFeasibleInfoScreen({this.index});
 
   @override
   Widget build(BuildContext context) {
-    TotalProposalFeasibleInfoController controller = Get.put(TotalProposalFeasibleInfoController());
+    TotalProposalFeasibleInfoController controller =
+        Get.put(TotalProposalFeasibleInfoController());
     return Scaffold(
       backgroundColor: ColorGallery.white_color,
       appBar: defaultAppBar(context,
@@ -39,15 +42,14 @@ class TotalProposalFeasibleInfoScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            
-            
-              
-              infoWidget("Registration No", controller.users[index!].regiStrationNo),
+              infoWidget(
+                  "Registration No", controller.users[index!].regiStrationNo),
               infoWidget("Applicant Name", controller.users[index!].name),
               infoWidget("Mobile", controller.users[index!].mobileNo),
               infoWidget("Project Name", "Project - 01".toUpperCase()),
               infoWidget("Village Name", "AMBILIJHARI"),
-              infoWidget("Gramapanchayat", controller.users[index!].gramaPanchayat),
+              infoWidget(
+                  "Gramapanchayat", controller.users[index!].gramaPanchayat),
               infoWidget("Block", controller.users[index!].block),
               infoWidget("District", controller.users[index!].district),
               infoWidget("Type of Project", "River Lift"),
@@ -55,10 +57,11 @@ class TotalProposalFeasibleInfoScreen extends StatelessWidget {
               infoWidget("Water Source Name", "BAITARANI RIVER"),
               infoWidget("Ayacut in Hectare", "30"),
               infoWidget("Cropping Pattern Rabi", "08"),
-              infoWidget("Scope of Power Supply", "100"), 
-              infoWidget("Latitude", "123456° 123456' 123456 N" ),
-              infoWidget("Longitude", "123° 123' 123 E" ),
-              infoWidget("Pumping Point Photo", controller.users[index!].detailsView),
+              infoWidget("Scope of Power Supply", "100"),
+              infoWidget("Latitude", "123456° 123456' 123456 N"),
+              infoWidget("Longitude", "123° 123' 123 E"),
+              infoWidget(
+                  "Pumping Point Photo", controller.users[index!].detailsView),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: Divider(
@@ -96,12 +99,14 @@ class TotalProposalFeasibleInfoScreen extends StatelessWidget {
               width: ScreenSize.width(Get.context!) * 0.45,
               child: details == "detailsView"
                   ? Buttons(
-                    onTapBtn: () {},
+                      onTapBtn: () {
+                        print("pdf opened");
+                       Get.to(PdfScreen());
+                      },
                       text: "View",
                       bgColor: ColorGallery.white_color,
                       textColor: ColorGallery.primary_color)
-                  :  TittleText(
-                          tittle: details, textWeight: FontWeight.w400),
+                  : TittleText(tittle: details, textWeight: FontWeight.w400),
             ),
           ],
         ),

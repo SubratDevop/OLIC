@@ -82,7 +82,7 @@ class TotalProposalFeasibleScreen extends StatelessWidget {
                                   index: controller.users.indexOf(user),
                                 ),
                               );
-                              Get.toNamed("/BeneficiaryInfoScreen");
+                              Get.toNamed("/TotalProposalFeasibleInfoScreen");
                             }
                           },
                         ),
