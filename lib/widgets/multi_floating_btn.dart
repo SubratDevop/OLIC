@@ -21,8 +21,8 @@ class MultiFloatingBtn extends StatelessWidget {
           curve: Curves.bounceIn,
           overlayColor: Colors.black,
           overlayOpacity: 0.5,
-          onOpen: () => print('OPENING DIAL'), // action when menu opens
-          onClose: () => print('DIAL CLOSED'), //action when menu closes
+          // onOpen: () => print('OPENING DIAL'), // action when menu opens
+          // onClose: () => print('DIAL CLOSED'), //action when menu closes
 
           elevation: 8.0, //shadow elevation of button
           shape: CircleBorder(), //shape of button
