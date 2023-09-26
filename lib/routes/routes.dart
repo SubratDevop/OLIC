@@ -3,12 +3,13 @@ import 'package:olic/screens/Beneficiary_Details/screens/benificiary_info_screen
 
 import '../screens/Beneficiary_Details/screens/benificiary_details_screen.dart';
 import '../screens/Farmer registration Details/farmer_registration_details_screen.dart';
+import '../screens/Proposal_Not_Feasible/screens/proposal_not_feasible_screen.dart';
 
 class Routes {
   static String beneficiaryDetailsScreen = "/Beneficiary_Details_Screen";
   static String beneficiaryInfosScreen = "/BeneficiaryInfoScreen";
-  static String farmer_registration_details_screen =
-      "/FarmerRegistrationDetailsScreen";
+  static String farmerregistrationdetailsscreen =  "/FarmerRegistrationDetailsScreen";
+  static String proposalnotfeasibleScreenState =  "/ProposalNotFeasibleScreen";
 }
 
 final getPages = [
@@ -21,7 +22,11 @@ final getPages = [
     page: () => BeneficiaryInfoScreen(),
   ),
   GetPage(
-    name: Routes.farmer_registration_details_screen,
+    name: Routes.farmerregistrationdetailsscreen,
     page: () => FarmerRegistrationDetailsScreen(),
+  ),
+  GetPage(
+    name: Routes.proposalnotfeasibleScreenState,
+    page: () => ProposalNotFeasibleScreen(),
   ),
 ];

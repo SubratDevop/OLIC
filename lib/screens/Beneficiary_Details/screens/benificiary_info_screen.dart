@@ -8,7 +8,6 @@ import 'package:olic/widgets/default_appbar.dar.dart';
 import '../../../widgets/custm_text.dart';
 import '../../Farmer registration Details/farmer_registration_details_screen.dart';
 import '../controller/benificiary_info_controller.dart';
-import '../model/user_modal.dart';
 
 class BeneficiaryInfoScreen extends StatelessWidget {
   int? index;

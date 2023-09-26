@@ -49,8 +49,6 @@ class Beneficiary_Details_Screen extends StatelessWidget {
                   horizontalMargin: 10,
                   showBottomBorder: true,
                   sortAscending: controller.isAsending.value,
-              
-                  //  sortColumnIndex: controller.sortColumnIndex.value,
                    sortColumnIndex: controller.sortColumnIndex.value,
                   columns: controller.getColumns(),
               
