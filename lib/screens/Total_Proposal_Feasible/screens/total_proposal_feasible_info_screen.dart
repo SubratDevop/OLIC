@@ -47,7 +47,7 @@ class TotalProposalFeasibleInfoScreen extends StatelessWidget {
               infoWidget("Applicant Name", controller.users[index!].name),
               infoWidget("Mobile", controller.users[index!].mobileNo),
               infoWidget("Project Name", "Project - 01".toUpperCase()),
-              infoWidget("Village Name", controller.users[index!].village),
+              infoWidget("Village Name", controller.users[index!].village ),
               infoWidget(
                   "Gramapanchayat", controller.users[index!].gramaPanchayat),
               infoWidget("Block", controller.users[index!].block),
