@@ -6,7 +6,7 @@ import 'package:olic/widgets/buttons.dart';
 import 'package:olic/widgets/default_appbar.dar.dart';
 
 import '../../../widgets/custm_text.dart';
-import '../../Farmer registration Details/farmer_registration_details_screen.dart';
+import '../../Farmer_Registration_Details/farmer_registration_details_screen.dart';
 import '../controller/benificiary_info_controller.dart';
 
 class BeneficiaryInfoScreen extends StatelessWidget {

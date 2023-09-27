@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:get/get.dart';
 import 'package:olic/commons/color_gallery.dart';
 import 'package:olic/constants/screensize.dart';
@@ -8,17 +7,16 @@ import 'package:olic/widgets/buttons.dart';
 import 'package:olic/widgets/default_appbar.dar.dart';
 
 import '../../../widgets/custm_text.dart';
-import '../../Farmer_Registration_Details/farmer_registration_details_screen.dart';
-import '../controller/total_proposal_feasible_info_controller.dart';
+import '../controller/pending_feasible_info_controller.dart';
 
-class TotalProposalFeasibleInfoScreen extends StatelessWidget {
+class PendingFeasibleInfoScreen extends StatelessWidget {
   int? index;
-  TotalProposalFeasibleInfoScreen({this.index});
+  PendingFeasibleInfoScreen({this.index});
 
   @override
   Widget build(BuildContext context) {
-    TotalProposalFeasibleInfoController controller =
-        Get.put(TotalProposalFeasibleInfoController());
+    PendingFeasibleInfoController controller =
+        Get.put(PendingFeasibleInfoController());
     return Scaffold(
       backgroundColor: ColorGallery.white_color,
       appBar: defaultAppBar(context,
@@ -44,24 +42,14 @@ class TotalProposalFeasibleInfoScreen extends StatelessWidget {
               ),
               infoWidget(
                   "Registration No", controller.users[index!].regiStrationNo),
-              infoWidget("Applicant Name", controller.users[index!].name),
-              infoWidget("Mobile", controller.users[index!].mobileNo),
-              infoWidget("Project Name", "Project - 01".toUpperCase()),
-              infoWidget("Village Name", controller.users[index!].village),
+              infoWidget("Name", controller.users[index!].name),
+              infoWidget("Gender", controller.users[index!].gender),
+              infoWidget("Mobile No", controller.users[index!].mobileNo),
+              infoWidget("District", controller.users[index!].district),
+              infoWidget("Block", controller.users[index!].block),
               infoWidget(
                   "Gramapanchayat", controller.users[index!].gramaPanchayat),
-              infoWidget("Block", controller.users[index!].block),
-              infoWidget("District", controller.users[index!].district),
-              infoWidget("Type of Project", "River Lift"),
-              infoWidget("Source of Water", "River / Nalla"),
-              infoWidget("Water Source Name", "BAITARANI RIVER"),
-              infoWidget("Ayacut in Hectare", "30"),
-              infoWidget("Cropping Pattern Rabi", "08"),
-              infoWidget("Scope of Power Supply", "100"),
-              infoWidget("Latitude", "123456° 123456' 123456 N"),
-              infoWidget("Longitude", "123° 123' 123 E"),
-              infoWidget(
-                  "Pumping Point Photo", controller.users[index!].detailsView),
+              infoWidget("Village", controller.users[index!].village),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: Divider(
